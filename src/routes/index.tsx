@@ -10,7 +10,7 @@ import n8nJobScraper from "@/assets/n8n_ai_job_scraper.png.asset.json";
 import {
   Bot, Workflow, CalendarCheck, Database, FileText, Users, Headphones, Mail, Phone, MapPin,
   Linkedin, Facebook, Instagram, ArrowRight, Download, Quote, Zap, Briefcase, Menu, X,
-  Maximize2, ChevronRight, Send,
+  Maximize2, ChevronRight, Send, Sparkles,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -519,7 +519,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-6">
           <Heading kicker="Previous works" title="Portfolio" />
           <p className="-mt-8 mb-8 text-center text-sm text-muted-foreground">
-            Real workflows I've built — click any card to open the full diagram.
+            A small sample of the workflows I've built — click any card to open the full diagram.
           </p>
           <div className="mb-10 flex flex-wrap justify-center gap-2">
             {filters.map((t) => (
@@ -554,6 +554,25 @@ function Index() {
               </Reveal>
             ))}
           </div>
+          <Reveal className="mt-10">
+            <div className="flex flex-col items-center gap-4 rounded-xl border border-primary/30 bg-primary/5 px-6 py-6 text-center sm:flex-row sm:text-left">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/15 text-primary">
+                <Sparkles className="h-5 w-5" />
+              </span>
+              <div className="flex-1">
+                <p className="font-semibold">These are just samples.</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  I've built many more automations than fit on this page — lead capture, follow-up
+                  sequences, invoicing and reporting, AI drafting, and custom CRM setups. Tell me
+                  what's slowing you down and I'll show you something similar.
+                </p>
+              </div>
+              <a href="#contact" onClick={ripple}
+                className="relative inline-flex shrink-0 items-center gap-2 overflow-hidden rounded-full border border-primary px-5 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground">
+                Ask about a workflow <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
