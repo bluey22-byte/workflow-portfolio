@@ -222,6 +222,7 @@ const testimonials = [
   { q: "Nikki took our messy admin and turned it into systems that run themselves. Our follow-ups never slip anymore.", n: "Gym Owner", r: "Fitness Business" },
   { q: "Our GoHighLevel setup finally works the way we imagined — pipelines, reminders, all of it. Fast and detail-oriented.", n: "Agency Founder", r: "Marketing Agency" },
   { q: "Reliable, proactive and quick to learn any tool. Onboarding new clients is now a one-click process.", n: "Small Business Owner", r: "Consulting" },
+  { q: "Nikki took over our candidate tracking and new-hire onboarding, and not one follow-up slipped. Interview scheduling used to eat my whole week — now it just happens.", n: "Thania L.", r: "HR Manager" },
 ];
 
 const tools = ["Zapier", "Make", "n8n", "GoHighLevel", "ChatGPT", "Claude", "Notion", "Airtable", "Google Workspace", "Google Forms", "Google Drive", "Slack", "Asana", "Xero", "Apollo", "Trello", "ClickUp", "Canva", "CapCut", "WordPress"];
@@ -580,7 +581,7 @@ function Index() {
       <section id="testimonials" className="bg-card/40 py-24">
         <div className="mx-auto max-w-6xl px-6">
           <Heading kicker="Kind words" title="Testimonials" />
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {testimonials.map((t, i) => (
               <Reveal key={i} delay={i * 120}>
                 <figure className="h-full rounded-xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary/60">
