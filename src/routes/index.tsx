@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
+import portrait from "@/assets/nikki_portrait.jpg.asset.json";
 import {
-  Workflow, CalendarCheck, Database, FileText, Users, Headphones, Mail, Phone, MapPin,
+  Bot, Workflow, CalendarCheck, Database, FileText, Users, Headphones, Mail, Phone, MapPin,
   Linkedin, Facebook, Instagram, ArrowRight, Download, Quote, Zap, Briefcase, Menu, X,
 } from "lucide-react";
 
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/")({
 });
 
 const nav = [
-  ["Home", "home"], ["Services", "services"], ["Experience", "experience"],
+  ["Home", "home"], ["About", "about"], ["Services", "services"], ["Experience", "experience"],
   ["Portfolio", "portfolio"], ["Testimonials", "testimonials"], ["Contact", "contact"],
 ] as const;
 
@@ -57,11 +58,13 @@ function Heading({ kicker, title }: { kicker: string; title: string }) {
 
 const services = [
   { icon: Workflow, t: "Workflow Automation", d: "Custom Zapier, Make and n8n scenarios for lead routing, notifications and database updates — less manual work, fewer errors." },
-  { icon: Zap, t: "GoHighLevel CRM Setup", d: "Sub-accounts, pipelines, funnels, calendars and SMS/email nurture sequences built to convert." },
+  { icon: Zap, t: "GoHighLevel CRM & Funnels", d: "Sub-accounts, pipelines, funnels, calendars, workflows and SMS/email nurture sequences built to capture and convert leads." },
+  { icon: Bot, t: "AI Assistance with Claude", d: "Claude-powered drafting, summarizing, SOP writing and inbox triage, wired into your Google Workspace, Notion and Slack." },
   { icon: CalendarCheck, t: "Inbox & Calendar Management", d: "Inbox-zero systems, priority filtering and conflict-free scheduling across time zones." },
   { icon: Database, t: "Data & Record Keeping", d: "Clean, accurate and private databases in Google Sheets, Airtable and Notion." },
   { icon: FileText, t: "SOP & Process Design", d: "Clear Standard Operating Procedures that train teams and standardize daily operations." },
   { icon: Users, t: "Client & Team Onboarding", d: "Intake forms, welcome kits, tool access and organized Drive folders — onboarding on autopilot." },
+  { icon: Headphones, t: "Customer & Vendor Support", d: "Professional client communication, supplier coordination and quick resolution of order or billing issues." },
 ];
 
 const experience = [
@@ -69,15 +72,17 @@ const experience = [
     role: "Freelance Virtual Assistant", org: "Remote Clients",
     pts: [
       "Automated lead capture, CRM updates, scheduling and client intake with Make, Zapier and n8n.",
-      "Built GoHighLevel sub-accounts, pipelines, funnels and automated SMS/email nurture sequences.",
-      "Integrated AI tools and APIs into Google Workspace, Notion and Slack workspaces.",
+      "Built and managed GoHighLevel sub-accounts, custom pipelines, calendars, lead-capture forms, funnels and automated SMS/email nurture workflows.",
+      "Used Claude and ChatGPT for content drafting, SOP writing and inbox routing, integrated into Google Workspace, Notion and Slack.",
+      "Drafted and proofread professional email correspondence on behalf of management.",
       "Managed executive schedules, email correspondence and end-to-end client onboarding.",
     ],
   },
   {
     role: "Operations & Administrative Coordinator", org: "Rojins Fitness Gym",
     pts: [
-      "Built automated workflows for email notifications, lead routing and database updates.",
+      "Built automated workflows for email notifications, lead routing and database updates with Zapier, Make and n8n.",
+      "Used Claude to draft SOPs, member communications and daily reports faster.",
       "Created and maintained SOPs to train staff and standardize admin workflows.",
       "Kept membership databases at 100% accuracy; coordinated calendars and shift schedules.",
       "Handled sales reports, expenses, invoice reconciliation and vendor coordination.",
@@ -159,7 +164,7 @@ function Index() {
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-primary md:text-5xl">Operations VA & Workflow Automation Specialist</h1>
             </Reveal>
             <Reveal delay={300}>
-              <p className="mt-5 max-w-lg text-muted-foreground">I streamline daily business operations and build no-code automations with Zapier, Make and n8n — so you can stop doing busywork and focus on growth.</p>
+              <p className="mt-5 max-w-lg text-muted-foreground">I streamline daily business operations and build no-code automations with Zapier, Make, n8n and GoHighLevel — powered by AI like Claude — so you can stop doing busywork and focus on growth.</p>
             </Reveal>
             <Reveal delay={400}>
               <div className="mt-6 flex gap-3">
@@ -184,10 +189,10 @@ function Index() {
           </div>
           <Reveal delay={300} className="relative mx-auto aspect-square w-full max-w-md">
             <div className="absolute inset-6 rounded-full bg-card" />
-            <div className="absolute inset-16 grid place-items-center rounded-full bg-gradient-to-br from-primary to-primary/40 shadow-[0_30px_80px_-20px_var(--primary)]">
-              <span className="text-7xl font-extrabold text-primary-foreground">NB</span>
+            <div className="absolute inset-16 overflow-hidden rounded-full bg-gradient-to-br from-primary to-primary/40 p-1.5 shadow-[0_30px_80px_-20px_var(--primary)]">
+              <img src={portrait.url} alt="Nikki B. Bassit" width={960} height={958} className="h-full w-full rounded-full object-cover object-[50%_35%]" />
             </div>
-            {[["Zapier", "left-0 top-10"], ["n8n", "right-0 top-24"], ["Make", "bottom-16 left-2"], ["GoHighLevel", "bottom-6 right-6"]].map(([t, pos], i) => (
+            {[["Zapier", "left-0 top-10"], ["n8n", "right-0 top-24"], ["Make", "bottom-24 left-0"], ["GoHighLevel", "bottom-6 right-6"], ["Claude", "top-0 right-16"]].map(([t, pos], i) => (
               <span key={t} className={`floaty absolute ${pos} rounded-full border border-border bg-card px-4 py-2 text-sm font-medium shadow-lg`} style={{ animationDelay: `${i * 0.7}s` }}>
                 <span className="mr-2 inline-block h-2 w-2 rounded-full bg-primary" />{t}
               </span>
@@ -196,11 +201,28 @@ function Index() {
         </div>
       </section>
 
+      {/* About */}
+      <section id="about" className="py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">About me</p>
+            <h2 className="mt-3 text-3xl font-bold md:text-4xl">Turning busywork into smooth, automated systems</h2>
+          </Reveal>
+          <Reveal delay={150}>
+            <p className="text-muted-foreground">I'm a Business Administration undergraduate turned Operations Virtual Assistant and Workflow Automation Specialist. I streamline daily business operations, manage client communications and build no-code automations with Zapier, Make and n8n.</p>
+            <p className="mt-4 text-muted-foreground">I set up and manage <span className="text-foreground">GoHighLevel</span> pipelines, funnels and nurture workflows, and I use <span className="text-foreground">Claude</span> and other AI tools to work faster and smarter. Organized, proactive and detail-oriented — I'm ready to bring strong operational and technical support to your remote team.</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {["Organized", "Proactive", "Fast Learner", "Detail-Oriented", "Clear Communicator"].map((t) => <span key={t} className="rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">{t}</span>)}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Services */}
-      <section id="services" className="py-24">
+      <section id="services" className="bg-card/40 py-24">
         <div className="mx-auto max-w-6xl px-6">
           <Heading kicker="What I do" title="Services" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s, i) => (
               <Reveal key={s.t} delay={i * 80}>
                 <div onClick={ripple} className="group relative h-full cursor-pointer overflow-hidden rounded-xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-2 hover:border-primary/60">
