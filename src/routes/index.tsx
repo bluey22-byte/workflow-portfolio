@@ -599,41 +599,22 @@ function Index() {
       <section id="contact" className="py-24">
         <div className="mx-auto max-w-5xl px-6">
           <Heading kicker="Let's work together" title="Contact Me" />
-          <div className="grid gap-8 md:grid-cols-5">
-            <Reveal className="space-y-4 md:col-span-2">
-              {[
-                [Phone, "Phone", "+63 994 849 5667", "tel:+639948495667"],
-                [Mail, "Email", "nikkibassit018@gmail.com", "mailto:nikkibassit018@gmail.com"],
-                [Mail, "Business Email", "blutechva@gmail.com", "mailto:blutechva@gmail.com"],
-                [MapPin, "Location", "Baguio, Philippines", "#contact"],
-              ].map(([I, l, v, h]) => {
-                const Icon = I as typeof Phone;
-                return (
-                  <a key={l as string} href={h as string} className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all hover:translate-x-1 hover:border-primary/60">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary"><Icon className="h-5 w-5" /></span>
-                    <span className="min-w-0"><span className="block text-xs text-muted-foreground">{l as string}</span><span className="block truncate text-sm font-medium">{v as string}</span></span>
-                  </a>
-                );
-              })}
-            </Reveal>
-            <Reveal delay={150} className="md:col-span-3">
-              <form className="space-y-4 rounded-xl border border-border bg-card p-6"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const f = new FormData(e.currentTarget);
-                  window.location.href = `mailto:nikkibassit018@gmail.com?subject=${encodeURIComponent(`Inquiry from ${f.get("name")}`)}&body=${encodeURIComponent(`${f.get("message")}\n\n— ${f.get("name")} (${f.get("email")})`)}`;
-                }}>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <input required name="name" placeholder="Your name" className="rounded-md border border-input bg-background px-4 py-3 text-sm outline-hidden focus:border-primary" />
-                  <input required type="email" name="email" placeholder="Your email" className="rounded-md border border-input bg-background px-4 py-3 text-sm outline-hidden focus:border-primary" />
-                </div>
-                <textarea required name="message" rows={5} placeholder="Tell me about your project..." className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm outline-hidden focus:border-primary" />
-                <button type="submit" onClick={ripple} className="relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 active:scale-95">
-                  Send Message <ArrowRight className="h-4 w-4" />
-                </button>
-              </form>
-            </Reveal>
-          </div>
+          <Reveal className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
+            {[
+              [Phone, "Phone", "+63 994 849 5667", "tel:+639948495667"],
+              [Mail, "Email", "nikkibassit018@gmail.com", "mailto:nikkibassit018@gmail.com"],
+              [Mail, "Business Email", "blutechva@gmail.com", "mailto:blutechva@gmail.com"],
+              [MapPin, "Location", "Baguio, Philippines", "#contact"],
+            ].map(([I, l, v, h]) => {
+              const Icon = I as typeof Phone;
+              return (
+                <a key={l as string} href={h as string} className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all hover:translate-x-1 hover:border-primary/60">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary"><Icon className="h-5 w-5" /></span>
+                  <span className="min-w-0"><span className="block text-xs text-muted-foreground">{l as string}</span><span className="block truncate text-sm font-medium">{v as string}</span></span>
+                </a>
+              );
+            })}
+          </Reveal>
         </div>
       </section>
 
